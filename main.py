@@ -1,43 +1,31 @@
-#Para corregir este desfase, en el año 1582 el papa Gregorio XIII introdujo un nuevo calendario, en el que el último año de cada siglo dejaba de ser bisiesto, a no ser que fuera divisible por 400.
+#Escriba un programa que pida dos números enteros y que calcule la división, indicando si la división es exacta o no.
 
-#Escriba un programa que indique si un año es bisiesto o no, teniendo en cuenta cuál era el calendario vigente en ese año:
+#Dividendo: 14
+#Divisor: 5
 
-#Ingrese un anno: 1988
-#1988 es bisiesto x
+#La división no es exacta.
+#Cociente: 2
+#Resto: 4
 
-#Ingrese un anno: 2011
-#2011 no es bisiesto  t
+#Dividendo: 100
+#Divisor: 10
 
-#Ingrese un anno: 1700
-#1700 no es bisiesto
+#La división es exacta.
+#Cociente: 10
+#Resto: 0
 
-#Ingrese un anno: 1500
-#1500 es bisiesto
-
-#Ingrese un anno: 2400
-#2400 es bisiesto
-
-orbEarth = 365.25   #Number of days to earth rotate around the sun
-
-yearnumber = int(input("Please insert a year number: "))
-
-def isleap(yearnumber):
-    if yearnumber < 1582:
-        # Rule of juliano Calendary
-        return yearnumber % 4 == 0
-    else:
-        # Rule of gregoriano calendary
-        if yearnumber % 400 == 0:   #is leap year
-            return True
-        elif yearnumber % 100 == 0: #isn't leap year
-            return False
-        elif yearnumber % 4 == 0:   #is leap year
-            return True
-        else:
-            return False
-if isleap(yearnumber) == True:
-    print(f"""{yearnumber} is a leap year""")
+dividend = int(input("""Welcome to that program, this program say you if the division is an exact division or no:
+                     please insert the dividend of division: """))
+divider = int(input("please insert thte divider of division: "))
+Restofdivision =dividend%divider    
+quotient = dividend//divider
+if Restofdivision <0:
+        print("the division isn't exact")
+elif Restofdivision >0:
+        print("the division isn't exact")
 else:
-    print(f"""{yearnumber} is'nt a leap year""")
+        print("the division is exact")
+print(f"""quotient: {quotient}
+rest: {Restofdivision}""")
     
-    
+
