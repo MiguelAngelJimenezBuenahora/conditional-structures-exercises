@@ -1,50 +1,55 @@
-#Escriba un programa que entregue la edad del usuario a partir de su fecha de nacimiento:
+#El joven periodista Solarrabietas debe relatar un partido de tenis, pero no conoce las reglas del deporte. En particular, no ha logrado aprender cómo saber si un set ya terminó, y quién lo ganó.
 
-#Ingrese su fecha de nacimiento.
-#Dia: 14
-#Mes: 6
-#Anno: 1948
-#Usted tiene 62 annos
+#Un partido de tenis se divide en sets. Para ganar un set, un jugador debe ganar 6 juegos, pero además debe haber ganado por lo menos dos juegos más que su rival. Si el set está empatado a 5 juegos, el ganador es el primero que llegue a 7. Si el set está empatado a 6 juegos, el set se define en un último juego, en cuyo caso el resultado final es 7-6.
 
-#Por supuesto, el resultado entregado depende del día en que su programa será ejecutado.
+#Sabiendo que el jugador A ha ganado m juegos, y el jugador B, n juegos, al periodista le gustaría saber:
 
-#Para obtener la fecha actual, puede hacerlo usando la función localtime que viene en el módulo time. Los valores se obtienen de la siguiente manera (suponiendo que hoy es 11 de marzo de 2011):
+#    si A ganó el set, o
+#    si B ganó el set, o
+#    si el set todavía no termina, o
+#    si el resultado es inválido (por ejemplo, 8-6 o 7-3).
 
-#>>> from time import localtime
-#>>> t = localtime()
-#>>> t.tm_mday
-#11
-#>>> t.tm_mon
-#3
-#>>> t.tm_year
-#2011
+#Desarrolle un programa que solucione el problema de Solarrabietas:
 
-#El programa debe tener en cuenta si el cumpleaños ingresado ya pasó durante este año, o si todavía no ocurre.
+#Juegos ganados por A: 4
+#Juegos ganados por B: 5
+#Aun no termina
 
-import time
-#In case do you want use this code with the date of system, 
-#you can use:
-date_current = time.localtime()
-anio_exercise = date_current.tm_year
-month_exercise = date_current.tm_mon
-day_exercise = date_current.tm_mday
+#Juegos ganados por A: 5
+#Juegos ganados por B: 7
+#Gano B
+
+#Juegos ganados por A: 5
+#Juegos ganados por B: 6
+#Aun no termina
+
+#Juegos ganados por A: 3
+#Juegos ganados por B: 7
+#Invalido
+
+#Juegos ganados por A: 6
+#Juegos ganados por B: 4
+#Gano A
+
+playerA = int(input("Games wins for player A: "))
+playerB = int(input("Games wins for player B: "))
+
+def select_a_winner(m,n):
+    m = playerA
+    n = playerB
+
+    if m >= 6 and m - n >= 2:
+        return f"Win the set the player A: {m}-{n}"
+    elif n >= 6 and n - m >= 2:
+        return f"Win the set the player B: {m}-{n}"
+    elif m == 5 and n == 6:
+        return "The set is score: 5-6, win the first to arrive 7."
+    elif m == 6 and n == 5:
+        return "The set is score: 6-5, win the first to arrive 7."
+    elif m == 6 and n == 6:
+        return "the set is draw with score: 6-6, last game."
+    else:
+        return "The set not finish ."
+print (select_a_winner(playerA , playerB))
 
 
-#anio_exercise = 2011
-#month_exercise = 3
-#day_exercise = 11
-
-
-dateofborn = input("""This program process your age of born and say you what is your age, 
-Please can you insert you borntime in this format (dd/mm/aaaa): """)
-
-#I'll Convert string to a date object
-
-day, month, anio = map(int, dateofborn.split('/')) 
-
-yearfromborntocurrent = anio_exercise - anio
-
-if anio_exercise == anio:
-    if (month_exercise, day_exercise) < (month, day):
-        yearfromborntocurrent -= 1
-print(f"""Your have {yearfromborntocurrent} annos""") 
