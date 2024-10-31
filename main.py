@@ -1,42 +1,31 @@
-#Los tres lados a, b y c de un triángulo deben satisfacer la desigualdad triangular: cada uno de los lados no puede ser más largo que la suma de los otros dos.
+#El riesgo de que una persona sufra enfermedades coronarias depende de su edad y su índice de masa corporal:
 
-#Escriba un programa que reciba como entrada los tres lados de un triángulo, e indique:
+#      	edad < 45 	edad ≥ 45
+#    IMC < 22.0 	bajo 	medio
+#    IMC ≥ 22.0 	medio 	alto
 
-#    si acaso el triángulo es inválido; y
-#    si no lo es, qué tipo de triángulo es.
+#El índice de masa corporal es el cuociente entre el peso del individuo en kilos y el cuadrado de su estatura en metros.
 
-#ngrese a: 3.9
-#Ingrese b: 6.0
-#Ingrese c: 1.2
-#No es un triangulo valido.
+#Escriba un programa que reciba como entrada la estatura, el peso y la edad de una persona, y le entregue su condición de riesgo.
 
-#Ingrese a: 1.9
-#Ingrese b: 2
-#Ingrese c: 2
-#El triangulo es isoceles.
-
-#El triangulo es escaleno.
-#Ingrese a: 3.0
-#Ingrese b: 5.0
-#Ingrese c: 4.0
-
-def typeoftriangle(a, b, c):
-    # Verify the triangular inequality
-    if a + b > c and a + c > b and b + c > a:
-        # Valid triangle, determine type
-        if a == b == c:
-            return "The triangle is equilateral."
-        elif a == b or a == c or b == c:
-            return "The triangle is isosceles."
+age = int(input("""This program calculate your IMC and say you the level of warning to coronary heart diseases
+Please insert your age: """))
+Height = float(input("Plase insert your height on m: "))
+Weight = float(input("Please insert your weight on kg: "))
+imc = Weight/Height
+if age < 45:
+    if imc < 22:
+        print("Your risk is low")
+    elif imc >= 22:
+        if imc <30:
+             print("Your risk i medium")
         else:
-            return "The triangle is scalene."
-    else:
-        return "The triangle is invalid."
-
-
-a = float(input("Please inset the lenght of the face a to triangle: "))
-b = float(input("Please inset the lenght of the face b to triangle: "))
-c = float(input("Please inset the lenght of the face c to triangle: "))
-
-result = typeoftriangle(a, b, c)
-print(result)
+            print("Your risk is high")
+    elif age >=45:
+        if imc < 22:
+            print("Your risk i medium")
+        elif imc >= 22:
+            if imc < 30:
+                print("Your risk is high")
+            else:
+                print("Your risk is so dangerous")
